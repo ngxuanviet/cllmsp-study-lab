@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CLLMSP Study Lab — Certified LLM Security Professional</title>
+  <!-- TailwindCSS qua CDN (giao diện vẫn dùng được khi offline nhờ styles.css) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-slate-950 text-slate-200">
+  <!-- ===== TOPBAR ===== -->
+  <header id="topbar">
+    <div class="tb-row">
+      <div class="brand"><span class="brand-ico">🛡️</span><div><b>CLLMSP Study Lab</b><small>Certified LLM Security Professional</small></div></div>
+      <nav id="module-nav" aria-label="Modules"></nav>
+      <div class="tb-actions">
+        <div id="overall" title="Tiến độ tổng"><div class="bar"><i id="overall-bar"></i></div><span id="overall-txt">0%</span></div>
+        <button class="btn" id="btn-practice">📝 Ôn tập</button>
+        <button class="btn btn-primary" id="btn-exam">🎯 Thi thử</button>
+        <button class="btn" id="btn-export" title="Xuất tiến độ ra file JSON">⬇ Export</button>
+        <button class="btn" id="btn-import" title="Nhập tiến độ từ file JSON">⬆ Import</button>
+        <input type="file" id="file-import" accept="application/json" hidden />
+        <button class="btn btn-ghost" id="btn-reset" title="Xoá toàn bộ tiến độ">🗑</button>
+      </div>
+    </div>
+    <div id="sec-tabs" aria-label="Sections"></div>
+  </header>
+
+  <!-- ===== SPLIT SCREEN ===== -->
+  <main id="workspace">
+    <!-- Cột trái: bài giảng (55-60%) -->
+    <section id="col-left">
+      <div id="lesson-scroll" class="scroll">
+        <div id="lesson"></div>
+      </div>
+      <!-- Overlay Ôn tập / Thi thử (chỉ phủ cột trái để cột phải vẫn cuộn dẫn chứng được) -->
+      <div id="study" class="hidden">
+        <div class="study-head"><b id="study-title">Ôn tập</b><button class="btn" id="study-close">✕ Đóng</button></div>
+        <div id="study-body" class="scroll"></div>
+      </div>
+    </section>
+
+    <div id="divider" title="Kéo để đổi độ rộng"></div>
+
+    <!-- Cột phải: Handbook song ngữ (40-45%) -->
+    <aside id="col-right">
+      <div class="hb-bar">
+        <b>📘 Handbook song ngữ</b>
+        <div class="seg" id="lang-seg">
+          <button data-lang="both" class="on">VI + EN</button><button data-lang="vi">VI</button><button data-lang="en">EN</button>
+        </div>
+      </div>
+      <div id="handbook" class="scroll"></div>
+    </aside>
+  </main>
+
+  <div id="toast"></div>
+
+  <!-- Thứ tự nạp: dữ liệu (Module 01 → 09) → labs → app (script thường để chạy được cả khi mở trực tiếp file://) -->
+  <script src="data/toc.js"></script>
+  <script src="data/module01.js"></script>
+  <script src="data/module02.js"></script>
+  <script src="data/module03.js"></script>
+  <script src="data/module04.js"></script>
+  <script src="data/module05.js"></script>
+  <script src="data/module06.js"></script>
+  <script src="data/module07.js"></script>
+  <script src="data/module08.js"></script>
+  <script src="data/module09.js"></script>
+  <script src="labs.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
